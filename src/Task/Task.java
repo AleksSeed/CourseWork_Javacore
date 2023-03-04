@@ -87,10 +87,6 @@ public abstract class Task {
 
     public abstract LocalDate getRepeatTime(LocalDate dateTime);
 
-    public abstract LocalDateTime getRepeatTime(LocalDateTime dateTime);
-
-    public abstract boolean appearsIn(LocalDate dateForChecking);
-
     public static class TaskManager {
         private final Map<Integer, Task> taskMap = new HashMap<>();
 

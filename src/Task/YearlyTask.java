@@ -11,16 +11,6 @@ public class YearlyTask extends Task{
     }
 
     @Override
-    public LocalDateTime getRepeatTime(LocalDateTime dateTime) {
-        return dateTime.plusYears(1);
-    }
-
-    @Override
-    public boolean appearsIn(LocalDate dateForChecking) {
-        return false;
-    }
-
-    @Override
     public LocalDate getRepeatTime(LocalDate dateTime) {
         return null;
     }

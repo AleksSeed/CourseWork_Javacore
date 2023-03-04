@@ -13,14 +13,4 @@ public class MonthlyTask extends Task {
         return dateTime.plusMonths(1);
     }
 
-    @Override
-    public LocalDateTime getRepeatTime(LocalDateTime dateTime) {
-        return null;
-    }
-
-    @Override
-    public boolean appearsIn(LocalDate dateForChecking) {
-        return false;
-    }
-
 }

@@ -14,14 +14,4 @@ public class OneTimeTask extends Task {
         return null;
     }
 
-    @Override
-    public LocalDateTime getRepeatTime(LocalDateTime dateTime) {
-        return null;
-    }
-
-    @Override
-    public boolean appearsIn(LocalDate dateForChecking) {
-        return false;
-    }
-
 }

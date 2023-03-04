@@ -13,14 +13,4 @@ public class WeeklyTask extends Task {
         return dateTime.plusWeeks(1);
     }
 
-    @Override
-    public LocalDateTime getRepeatTime(LocalDateTime dateTime) {
-        return null;
-    }
-
-    @Override
-    public boolean appearsIn(LocalDate dateForChecking) {
-        return false;
-    }
-
 }

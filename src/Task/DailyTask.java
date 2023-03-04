@@ -14,14 +14,4 @@ public class DailyTask extends Task{
         return dateTime.plusDays(1);
     }
 
-    @Override
-    public LocalDateTime getRepeatTime(LocalDateTime dateTime) {
-        return null;
-    }
-
-    @Override
-    public boolean appearsIn(LocalDate dateForChecking) {
-        return false;
-    }
-
 }
