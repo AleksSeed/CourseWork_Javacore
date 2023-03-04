@@ -3,8 +3,7 @@ import Task.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Main {
@@ -14,9 +13,9 @@ public class Main {
     private static final Pattern DATE_PATTERN = Pattern.compile("\\d{2}.\\d{2}.\\d{4}");
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        try (Scanner scanner = new Scanner(System.in)) {
+      /*  try (Scanner scanner = new Scanner(System.in)) {
             label:
             while (true) {
                 printMenu();
@@ -51,7 +50,7 @@ public class Main {
             String dateTime = scanner.next(DATE_PATTERN);
             LocalDate inputDate = LocalDate.parse(dateTime, DATE_FORMATTER);
             Collection<Task> tasksByDay = TASK_MANAGER.getAllByDate(inputDate);
-            for (Task task: tasksByDay
+            for (Task task : tasksByDay
             ) {
                 System.out.println(task);
             }
@@ -155,12 +154,12 @@ public class Main {
         }
     }
 
-    private static void removeTask(Scanner scanner){
+    private static void removeTask(Scanner scanner) {
         System.out.println("Введите id задачи для удаления(id с 1)");
         try {
             Integer id = scanner.nextInt();
             TASK_MANAGER.remove(id);
-            System.out.println("Задача номер " + id + " удалена" );
+            System.out.println("Задача номер " + id + " удалена");
         } catch (TaskNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -181,5 +180,43 @@ public class Main {
         System.out.println("2. Удалить задачу");
         System.out.println("3. Получить задачу на указанный день");
         System.out.println("0. Выход");
+    }*/
+
+        /** ================================= Функциональное программирование ======================================= **/
+
+        System.out.println("Введите текст:");
+        // String input = "yourapp the quick brown fox jumps over the lazy dog";
+        String input = args.length == 0 ? new Scanner(System.in).nextLine() : args[0];
+        String[] tokens = input.split("\\s+");
+        Map<String, Integer> map = new HashMap<>();
+        Arrays.stream(tokens).forEach(s -> map.compute(s, (str, integer) -> map.containsKey(str) ? map.get(str) + 1 : 1));
+
+        System.out.println("Output:\nВ тексте " + map.size() + " слов\nTOP 10:");
+
+        map.keySet().stream().map(key -> new Tuple(key, map.get(key)))
+                .sorted().limit(10).forEach(System.out::println);
     }
+}
+
+class Tuple implements Comparable<Tuple> {
+    private final String k;
+    private final Integer v;
+
+    public Tuple(String k, Integer v) {
+        this.k = k;
+        this.v = v;
+    }
+
+    @Override
+    public int compareTo(Tuple o) {
+        if (this.v < o.v) return 1;
+        else if (this.v > o.v) return -1;
+        else return this.k.compareTo(o.k);
+    }
+
+    @Override
+    public String toString() {
+        return v + " - " + k;
+    }
+
 }
